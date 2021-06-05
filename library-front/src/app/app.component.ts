@@ -3,6 +3,7 @@ import { Book } from './interface/book';
 import { Person } from './interface/person';
 import { PersonDataService } from './service/person-data.service';
 import { Router } from '@angular/router';
+import { BookDataService } from './service/book-data.service';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +13,14 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit{
   title = 'library-front';
 
-  constructor(private pds: PersonDataService, private router: Router) {}
+  constructor(private pds: PersonDataService, private router: Router, private bds: BookDataService) {}
 
   person: Person[] | undefined;
   book: Book[] | undefined;
 
   ngOnInit() {
     this.pds.getPersonList().subscribe(data => this.person = data);
-    this.pds.getBookList().subscribe(data => this.book = data);
+    this.bds.getBookList().subscribe(data => this.book = data);
   }
 
   readersClick = () => this.router.navigateByUrl('/readers');

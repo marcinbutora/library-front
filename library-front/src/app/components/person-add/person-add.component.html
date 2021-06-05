@@ -1,1 +1,18 @@
-<p>person-add works!</p>
+<form [formGroup]="(personAddForm)" (ngSubmit)="savePerson()">
+    <div class="form-group">
+        <label for="idInput">ID</label>
+        <input type="number" name="id" formControlName="id" id="idInput" class="form-control">
+      <label for="firstnameInput">First name</label>
+      <input type="text" formControlName="firstname" class="form-control" id="firstnameInput" aria-describedby="firstnameHelp" placeholder="Enter first name">
+    </div>
+    <div class="form-group">
+      <label for="lastnameInput">Last name</label>
+      <input type="text" formControlName="lastname" class="form-control" id="lastnameInput" placeholder="Enter last name">
+    </div>
+    <div class="form-group">
+        <label for="cityInput">City</label>
+        <input type="text" formControlName="city" class="form-control" id="cityInput" placeholder="Enter city">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="
+    !personAddForm.valid">Submit</button>
+  </form>

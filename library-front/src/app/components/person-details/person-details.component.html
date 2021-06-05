@@ -1,1 +1,7 @@
 <p>person-details works!</p>
+<div *ngIf="person">
+    {{person?.firstname}}
+</div>
+<div>
+    <button (click)="getList()" class="btn btn-primary">Go Back</button>
+</div>

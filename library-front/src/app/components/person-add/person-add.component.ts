@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Person } from 'src/app/interface/person';
+import { PersonDataService } from 'src/app/service/person-data.service';
 
 @Component({
   selector: 'app-person-add',
@@ -7,9 +12,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonAddComponent implements OnInit {
 
-  constructor() { }
+  person!: Person;
+  submitted = false;
+
+  personAddForm = new FormGroup({
+    id: new FormControl(""),
+    firstname: new FormControl("", [
+      Validators.required,
+      Validators.minLength(3)
+    ]),
+    lastname: new FormControl("", [
+      Validators.required,
+      Validators.minLength(5)
+    ]),
+    city: new FormControl("", [
+      Validators.required,
+      Validators.minLength(3)
+    ])
+  }); 
+  
+  constructor(private router: Router, private pds: PersonDataService) { }
 
   ngOnInit(): void {
   }
-
-}
+      savePerson() {
+        const person: Person = this.personAddForm.value;
+        this.pds.createPerson(person);
+        console.log(person);
+      }
+  }

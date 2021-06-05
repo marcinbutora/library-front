@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Person } from '../../interface/person';
 import { PersonDataService } from '../../service/person-data.service';
@@ -10,10 +11,22 @@ import { PersonDataService } from '../../service/person-data.service';
 })
 export class PersonListComponent implements OnInit {
 
-  constructor(private pds: PersonDataService) { }
-  public person: Person[] | undefined;
+  constructor(private pds: PersonDataService, private router: Router) { }
+  person: Person[] | undefined;
+
 
   ngOnInit() {
     this.pds.getPersonList().subscribe(data => this.person = data);
   }
+
+  details(id: number) {
+    this.router.navigate(['/reader/details', id]);
+    console.log(id);
+  };
+
+  addNew() {
+    this.router.navigate(['/reader/add']);
+  }
+
+
 }

@@ -1,22 +1,53 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Book } from '../interface/book';
 import { Person } from '../interface/person';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonDataService {
 
-  private readonly apiUrl: string = 'http://localhost:8080/api';
+  apiUrl: string = 'http://localhost:8080/api';
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+  };
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // Return an observable with a user-facing error message.
+    return throwError(
+      'Something bad happened; please try again later.');
+  }
 
   constructor(private http: HttpClient) { }
 
   getPersonList = ():Observable<Person[]> => this.http.get<Person[]>(`${this.apiUrl}/person/list`);
-  getBookList = ():Observable<Book[]> => this.http.get<Book[]>(`${this.apiUrl}/book/list`);
-  getPersonById = (id: number):Observable<Person> => this.http.get<Person>(`${this.apiUrl}/${id}`);
-  createPerson = (person: Object): Observable<Object> => this.http.post(`${this.apiUrl}`, person); 
-  updatePerson = (id: number, value: any): Observable<Object> => this.http.put(`${this.apiUrl}/${id}`, value);
+
+  getPersonById = (id: number):Observable<any> => this.http.get<Person>(`${this.apiUrl}/person/byid/${id}`);
+
+  createPerson(person: Person): Observable<Person> {
+    return this.http.post<Person>(`${this.apiUrl}/person/add`, person, this.httpOptions).pipe(
+      catchError(this.handleError('createPerson', person))
+    )
+  }
+
+  updatePerson = (id: number, value: any): Observable<Object> => this.http.put(`${this.apiUrl}/person/update/${id}`, value);
+
   deletePerson = (id: number): Observable<any> => this.http.delete(`${this.apiUrl}/${id}`, { responseType: 'text'});
+
 }
