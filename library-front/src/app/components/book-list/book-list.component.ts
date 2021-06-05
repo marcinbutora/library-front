@@ -16,4 +16,5 @@ export class BookListComponent implements OnInit {
     this.pds.getBookList().subscribe(data => this.book = data);
   }
 
+  delete = () => console.log("test");
 }
