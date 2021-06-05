@@ -8,12 +8,20 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PersonListComponent } from './components/person-list/person-list.component';
 import { BookListComponent } from './components/book-list/book-list.component';
+import { PersonAddComponent } from './components/person-add/person-add.component';
+import { BookAddComponent } from './components/book-add/book-add.component';
+import { PersonUpdateComponent } from './components/person-update/person-update.component';
+import { BookUpdateComponent } from './components/book-update/book-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonListComponent,
-    BookListComponent
+    BookListComponent,
+    PersonAddComponent,
+    BookAddComponent,
+    PersonUpdateComponent,
+    BookUpdateComponent
   ],
   imports: [
     BrowserModule,
