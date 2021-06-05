@@ -12,6 +12,8 @@ import { PersonAddComponent } from './components/person-add/person-add.component
 import { BookAddComponent } from './components/book-add/book-add.component';
 import { PersonUpdateComponent } from './components/person-update/person-update.component';
 import { BookUpdateComponent } from './components/book-update/book-update.component';
+import { PersonDetailsComponent } from './components/person-details/person-details.component';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { BookUpdateComponent } from './components/book-update/book-update.compon
     PersonAddComponent,
     BookAddComponent,
     PersonUpdateComponent,
-    BookUpdateComponent
+    BookUpdateComponent,
+    PersonDetailsComponent,
+    BookDetailsComponent
   ],
   imports: [
     BrowserModule,
