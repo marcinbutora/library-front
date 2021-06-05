@@ -41,9 +41,7 @@ export class PersonDataService {
   getPersonById = (id: number):Observable<any> => this.http.get<Person>(`${this.apiUrl}/person/byid/${id}`);
 
   createPerson(person: Person): Observable<Person> {
-    return this.http.post<Person>(`${this.apiUrl}/person/add`, person, this.httpOptions).pipe(
-      catchError(this.handleError('createPerson', person))
-    )
+    return this.http.post<Person>(`${this.apiUrl}/person/add`, person, this.httpOptions)
   }
 
   updatePerson = (id: number, value: any): Observable<Object> => this.http.put(`${this.apiUrl}/person/update/${id}`, value);
