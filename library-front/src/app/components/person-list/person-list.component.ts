@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Person } from '../../interface/person';
 import { PersonDataService } from '../../service/person-data.service';
 
