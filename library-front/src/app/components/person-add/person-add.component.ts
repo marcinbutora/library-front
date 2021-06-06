@@ -16,6 +16,10 @@ export class PersonAddComponent implements OnInit {
   person!: Person;
   submitted = false;
 
+  getBack() {
+    this.router.navigate(['/']);
+  }
+
   personAddForm = new FormGroup({
     id: new FormControl(""),
     firstname: new FormControl("", [
@@ -46,6 +50,7 @@ export class PersonAddComponent implements OnInit {
             return true;
           }
         );
-        console.log(person);
-      }
+        this.personAddForm.reset();
+        this.submitted = true;
   }
+}
