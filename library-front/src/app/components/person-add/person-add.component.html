@@ -1,70 +1,76 @@
-<form [formGroup]="personAddForm" (ngSubmit)="savePerson()">
-  <div class="form-group">
-    <input
-      type="hidden"
-      name="id"
-      formControlName="id"
-      id="idInput"
-      class="form-control"
-    />
-    <label for="firstnameInput">First name</label>
-    <input
-      type="text"
-      formControlName="firstname"
-      class="form-control"
-      [ngClass]="
-        personAddForm.controls['firstname'].valid ? 'valid-input' : 'warn-input'
-      "
-      id="firstnameInput"
-      aria-describedby="firstnameHelp"
-      placeholder="Enter first name"
-    />
-    <p *ngIf="!personAddForm.controls['firstname'].valid" class="warn">
-      First name must constains at least 3 characters
-    </p>
-  </div>
-  <div class="form-group">
-    <label for="lastnameInput">Last name</label>
-    <input
-      type="text"
-      formControlName="lastname"
-      class="form-control"
-      [ngClass]="
-        personAddForm.controls['lastname'].valid ? 'valid-input' : 'warn-input'
-      "
-      id="lastnameInput"
-      placeholder="Enter last name"
-    />
-    <p *ngIf="!personAddForm.controls['lastname'].valid" class="warn">
-      Last name must constains at least 3 characters
-    </p>
-  </div>
-  <div class="form-group">
-    <label for="cityInput">City</label>
-    <input
-      type="text"
-      formControlName="city"
-      [ngClass]="
-        personAddForm.controls['city'].valid ? 'valid-input' : 'warn-input'
-      "
-      id="cityInput"
-      placeholder="Enter city"
-      class="form-control"
-    />
-    <p *ngIf="!personAddForm.controls['city'].valid" class="warn">
-      City must constains at least 3 characters
-    </p>
-  </div>
-  <button
-    type="submit"
-    class="btn btn-primary"
-    [disabled]="!personAddForm.valid"
-  >
-    Submit
-  </button>
-</form>
+<div class="container">
+  <form [formGroup]="personAddForm" (ngSubmit)="savePerson()">
+    <div class="form-group">
+      <input
+        type="hidden"
+        name="id"
+        formControlName="id"
+        id="idInput"
+        class="form-control"
+      />
+      <label for="firstnameInput">First name</label>
+      <input
+        type="text"
+        formControlName="firstname"
+        class="form-control"
+        [ngClass]="
+          personAddForm.controls['firstname'].valid
+            ? 'valid-input'
+            : 'warn-input'
+        "
+        id="firstnameInput"
+        aria-describedby="firstnameHelp"
+        placeholder="Enter first name"
+      />
+      <p *ngIf="!personAddForm.controls['firstname'].valid" class="warn">
+        First name must constains at least 3 characters
+      </p>
+    </div>
+    <div class="form-group">
+      <label for="lastnameInput">Last name</label>
+      <input
+        type="text"
+        formControlName="lastname"
+        class="form-control"
+        [ngClass]="
+          personAddForm.controls['lastname'].valid
+            ? 'valid-input'
+            : 'warn-input'
+        "
+        id="lastnameInput"
+        placeholder="Enter last name"
+      />
+      <p *ngIf="!personAddForm.controls['lastname'].valid" class="warn">
+        Last name must constains at least 3 characters
+      </p>
+    </div>
+    <div class="form-group">
+      <label for="cityInput">City</label>
+      <input
+        type="text"
+        formControlName="city"
+        [ngClass]="
+          personAddForm.controls['city'].valid ? 'valid-input' : 'warn-input'
+        "
+        id="cityInput"
+        placeholder="Enter city"
+        class="form-control"
+      />
+      <p *ngIf="!personAddForm.controls['city'].valid" class="warn">
+        City must constains at least 3 characters
+      </p>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!personAddForm.valid"
+    >
+      Submit
+    </button>
+  </form>
 
-<br />
-<div class="alert alert-success" role="alert" *ngIf="submitted">
-  Person was added to database!
+  <br />
+  <div class="alert alert-success" role="alert" *ngIf="submitted">
+    Person was added to database!
+  </div>
 </div>

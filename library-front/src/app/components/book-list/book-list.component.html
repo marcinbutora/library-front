@@ -1,26 +1,33 @@
-<button type="button" class="btn btn-primary mb">Add new book</button>
-<table class="table table-dark table-hover table-sm">
-    <caption>List of books</caption>
+<div class="container">
+  <button type="button" class="btn btn-info mb">
+    <i class="fas fa-plus-circle"></i> Add new book</button>
+  <table class="table table-light table-hover table-sm">
+    <caption>
+      List of books
+    </caption>
     <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">ISBN</th>
-            <th scope="col">Actions</th>
-        </tr>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">ISBN</th>
+        <th scope="col">Actions</th>
+      </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let b of book">
-            <th scope="row">{{b.id}}</th>
-            <td>{{b.title}}</td>
-            <td>{{b.description}}</td>
-            <td>{{b.isbn}}</td>
-            <td> 
-                <button type="button" class="btn btn-primary">Details</button>
-                <button type="button" class="btn btn-warning">Update</button>
-                <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
-            </td>
-        </tr>
+      <tr *ngFor="let b of book">
+        <th scope="row">{{ b.id }}</th>
+        <td>{{ b.title }}</td>
+        <td>{{ b.description }}</td>
+        <td>{{ b.isbn }}</td>
+        <td>
+          <button type="button" class="btn btn-primary">Details</button>
+          <button type="button" class="btn btn-warning">Update</button>
+          <button type="button" class="btn btn-danger" (click)="delete()">
+            Delete
+          </button>
+        </td>
+      </tr>
     </tbody>
-</table>
+  </table>
+</div>
