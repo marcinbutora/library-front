@@ -1,7 +1,6 @@
 <form [formGroup]="(personAddForm)" (ngSubmit)="savePerson()">
     <div class="form-group">
-        <label for="idInput">ID</label>
-        <input type="number" name="id" formControlName="id" id="idInput" class="form-control">
+      <input type="hidden" name="id" formControlName="id" id="idInput" class="form-control">
       <label for="firstnameInput">First name</label>
       <input type="text" formControlName="firstname" class="form-control" id="firstnameInput" aria-describedby="firstnameHelp" placeholder="Enter first name">
     </div>

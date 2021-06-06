@@ -1,9 +1,9 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Book } from '../interface/book';
 import { Person } from '../interface/person';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +18,19 @@ export class PersonDataService {
     })
   };
 
+  msgTrue = false;
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error);
+      console.log('An error occurred:', error.error);
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.
-      console.error(
+      console.log(
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
-    }
+    }     
     // Return an observable with a user-facing error message.
     return throwError(
       'Something bad happened; please try again later.');
@@ -41,7 +43,8 @@ export class PersonDataService {
   getPersonById = (id: number):Observable<any> => this.http.get<Person>(`${this.apiUrl}/person/byid/${id}`);
 
   createPerson(person: Person): Observable<Person> {
-    return this.http.post<Person>(`${this.apiUrl}/person/add`, person, this.httpOptions)
+    let personBody = JSON.stringify(person);
+    return this.http.post<Person>(`${this.apiUrl}/person/add`, personBody, this.httpOptions).pipe(catchError(this.handleError));
   }
 
   updatePerson = (id: number, value: any): Observable<Object> => this.http.put(`${this.apiUrl}/person/update/${id}`, value);
