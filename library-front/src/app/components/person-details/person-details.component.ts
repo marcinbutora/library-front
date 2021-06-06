@@ -10,7 +10,7 @@ import { PersonDataService } from 'src/app/service/person-data.service';
 })
 export class PersonDetailsComponent implements OnInit {
   id!: number;
-  person: Person | undefined;
+  person!: Person;
 
   constructor(
     private route: ActivatedRoute,

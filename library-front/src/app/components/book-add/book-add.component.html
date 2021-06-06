@@ -1,1 +1,86 @@
-<p>book-add works!</p>
+<div class="container">
+    <form [formGroup]="bookAddForm" (ngSubmit)="saveBook()">
+      <div class="form-group">
+        <input
+          type="hidden"
+          name="id"
+          formControlName="id"
+          id="idInput"
+          class="form-control"
+        />
+        <label for="titleInput">Title</label>
+        <input
+          type="text"
+          formControlName="title"
+          class="form-control"
+          [ngClass]="
+            bookAddForm.controls['title'].valid
+              ? 'valid-input'
+              : 'warn-input'
+          "
+          id="titleInput"
+          placeholder="Enter title"
+        />
+        <p *ngIf="!bookAddForm.controls['title'].valid" class="warn">
+          Title must constains at least 3 characters
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="descInput">Description</label>
+        <input
+          type="text"
+          formControlName="description"
+          class="form-control"
+          [ngClass]="
+            bookAddForm.controls['description'].valid
+              ? 'valid-input'
+              : 'warn-input'
+          "
+          id="descInput"
+          placeholder="Enter description"
+        />
+        <p *ngIf="!bookAddForm.controls['description'].valid" class="warn">
+            Description must constains at least 3 characters
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="isbnInput">ISBN</label>
+        <input
+          type="text"
+          formControlName="isbn"
+          [ngClass]="
+            bookAddForm.controls['isbn'].valid ? 'valid-input' : 'warn-input'
+          "
+          id="isbnInput"
+          placeholder="Enter ISBN"
+          class="form-control"
+        />
+        <p *ngIf="!bookAddForm.controls['isbn'].valid" class="warn">
+          ISBN must constains at least 3 characters
+        </p>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!bookAddForm.valid"
+      >
+        Submit
+      </button>
+    </form>
+  
+    <br />
+    <div class="alert alert-success" role="alert" *ngIf="submitted">
+      Book was added to database!
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        (click)="getBack()"
+        *ngIf="submitted"
+      >
+        Get back to list
+      </button>
+    </div>
+  </div>
+  
