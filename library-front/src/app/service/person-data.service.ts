@@ -19,7 +19,7 @@ export class PersonDataService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': `${this.apiUrl}`
+      'Access-Control-Allow-Origin': `${this.apiUrl}`,
     }),
   };
 
@@ -42,12 +42,15 @@ export class PersonDataService {
 
   constructor(private http: HttpClient) {}
 
+  // working
   getPersonList = (): Observable<Person[]> =>
     this.http.get<Person[]>(`${this.apiUrl}/person/list`);
 
+  // working
   getPersonById = (id: number): Observable<any> =>
     this.http.get<Person>(`${this.apiUrl}/person/byid/${id}`);
 
+  // working
   createPerson(person: Person): Observable<Person> {
     let personBody = JSON.stringify(person);
     return this.http
@@ -55,15 +58,19 @@ export class PersonDataService {
       .pipe(catchError(this.handleError));
   }
 
-  updatePerson (id: number, person: Person): Observable<Person> {
+  // not working, some error of CORS policy
+  updatePerson(id: number, person: Person): Observable<Person> {
     let personBody = JSON.stringify(person);
-    return this.http.put<Person>(
-      `${this.apiUrl}/person/update/${id}`,
-      personBody,
-      this.httpOptions
-    ).pipe(catchError(this.handleError));
+    return this.http
+      .put<Person>(
+        `${this.apiUrl}/person/update/${id}`,
+        personBody,
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError));
   }
 
+  // testing
   deletePerson = (id: number): Observable<any> =>
-    this.http.delete(`${this.apiUrl}/${id}`, { responseType: 'text' });
+    this.http.delete(`${this.apiUrl}/person/delete/${id}`, this.httpOptions);
 }

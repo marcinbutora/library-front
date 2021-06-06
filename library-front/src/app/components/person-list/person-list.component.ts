@@ -11,20 +11,27 @@ import { PersonDataService } from '../../service/person-data.service';
 })
 export class PersonListComponent implements OnInit {
   constructor(private pds: PersonDataService, private router: Router) {}
-  person: Person[] | undefined;
+  person!: Person[];
+  personOne!: Person;
+  id: any;
 
   ngOnInit() {
+    this.pds.getPersonById(this.id).subscribe(data => this.personOne=data);
     this.pds.getPersonList().subscribe((data) => (this.person = data));
   }
 
   details(id: number) {
     this.router.navigate(['/reader/details', id]);
-    console.log(id);
   }
 
   update(id: number) {
     this.router.navigate(['/reader/update', id]);
-    console.log(id);
+  }
+
+  delete(id: number) {
+    this.router.navigate(['/reader/delete', id]);      
+    this.pds.deletePerson(id).subscribe(data => this.personOne=data);
+    this.pds.getPersonList();
   }
 
   addNew() {
