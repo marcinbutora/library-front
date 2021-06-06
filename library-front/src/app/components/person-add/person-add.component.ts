@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,7 +17,7 @@ export class PersonAddComponent implements OnInit {
   submitted = false;
 
   getBack() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/readers']);
   }
 
   personAddForm = new FormGroup({
@@ -34,15 +35,14 @@ export class PersonAddComponent implements OnInit {
 
   constructor(private router: Router, private pds: PersonDataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {}
   savePerson() {
     const person: Person = this.personAddForm.value;
-    this.pds.createPerson(person).subscribe((data) => {
+    this.pds.createPerson(person).subscribe(() => {
       // refreshing the list
       this.pds.getPersonList();
-      console.log(data);
-      return true;
     });
+
     this.personAddForm.reset();
     this.submitted = true;
   }

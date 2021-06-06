@@ -73,4 +73,14 @@
   <div class="alert alert-success" role="alert" *ngIf="submitted">
     Person was added to database!
   </div>
+  <div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="getBack()"
+      *ngIf="submitted"
+    >
+      Get back to list
+    </button>
+  </div>
 </div>

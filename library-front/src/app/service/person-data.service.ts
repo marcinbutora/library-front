@@ -55,7 +55,11 @@ export class PersonDataService {
   }
 
   updatePerson = (id: number, value: any): Observable<Object> =>
-    this.http.put(`${this.apiUrl}/person/update/${id}`, value);
+    this.http.put(
+      `${this.apiUrl}/person/update/${id}`,
+      value,
+      this.httpOptions
+    );
 
   deletePerson = (id: number): Observable<any> =>
     this.http.delete(`${this.apiUrl}/${id}`, { responseType: 'text' });
