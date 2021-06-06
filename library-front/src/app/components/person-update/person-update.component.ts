@@ -10,7 +10,7 @@ import { PersonDataService } from 'src/app/service/person-data.service';
   styleUrls: ['./person-update.component.scss'],
 })
 export class PersonUpdateComponent implements OnInit {
-  person: Person | undefined;
+  person!: Person;
   submitted = false;
   id: any;
 
