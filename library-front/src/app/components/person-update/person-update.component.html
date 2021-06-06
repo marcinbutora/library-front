@@ -1,0 +1,86 @@
+<div class="container">
+    <form [formGroup]="personUpdateForm" (ngSubmit)="updatePerson()">
+      <div class="form-group">
+        <input
+          type="hidden"
+          name="id"
+          formControlName="id"
+          id="idInput"
+          class="form-control"
+        />
+        <label for="firstnameInput">First name</label>
+        <input
+          type="text"
+          value="{{person?.firstname}}"
+          formControlName="firstname"
+          class="form-control"
+          [ngClass]="
+            personUpdateForm.controls['firstname'].valid
+              ? 'valid-input'
+              : 'warn-input'
+          "
+          id="firstnameInput"
+        />
+        <p *ngIf="!personUpdateForm.controls['firstname'].valid" class="warn">
+          First name must constains at least 3 characters
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="lastnameInput">Last name</label>
+        <input
+          type="text"
+          value="{{person?.lastname}}"
+          formControlName="lastname"
+          class="form-control"
+          [ngClass]="
+          personUpdateForm.controls['lastname'].valid
+              ? 'valid-input'
+              : 'warn-input'
+          "
+          id="lastnameInput"
+        />
+        <p *ngIf="!personUpdateForm.controls['lastname'].valid" class="warn">
+          Last name must constains at least 3 characters
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="cityInput">City</label>
+        <input
+          type="text"
+          value="{{person?.city}}"
+          formControlName="city"
+          [ngClass]="
+            personUpdateForm.controls['city'].valid ? 'valid-input' : 'warn-input'
+          "
+          id="cityInput"
+          class="form-control"
+        />
+        <p *ngIf="!personUpdateForm.controls['city'].valid" class="warn">
+          City must constains at least 3 characters
+        </p>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!personUpdateForm.valid"
+      >
+        Submit
+      </button>
+    </form>
+  
+    <br />
+    <div class="alert alert-success" role="alert" *ngIf="submitted">
+      Person was successfully updated!
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        (click)="getBack()"
+        *ngIf="submitted"
+      >
+        Get back to list
+      </button>
+    </div>
+  </div>
+  

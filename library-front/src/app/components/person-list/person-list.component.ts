@@ -22,6 +22,11 @@ export class PersonListComponent implements OnInit {
     console.log(id);
   }
 
+  update(id: number) {
+    this.router.navigate(['/reader/update', id]);
+    console.log(id);
+  }
+
   addNew() {
     this.router.navigate(['/reader/add']);
   }

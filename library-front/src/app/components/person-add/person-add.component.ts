@@ -1,9 +1,6 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { delay } from 'rxjs/operators';
 import { Person } from 'src/app/interface/person';
 import { PersonDataService } from 'src/app/service/person-data.service';
 

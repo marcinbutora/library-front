@@ -14,11 +14,12 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class PersonDataService {
-  apiUrl: string = 'http://localhost:8080/api';
+  private readonly apiUrl: string = 'http://localhost:8080/api';
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': `${this.apiUrl}`
     }),
   };
 
@@ -54,12 +55,14 @@ export class PersonDataService {
       .pipe(catchError(this.handleError));
   }
 
-  updatePerson = (id: number, value: any): Observable<Object> =>
-    this.http.put(
+  updatePerson (id: number, person: Person): Observable<Person> {
+    let personBody = JSON.stringify(person);
+    return this.http.put<Person>(
       `${this.apiUrl}/person/update/${id}`,
-      value,
+      personBody,
       this.httpOptions
-    );
+    ).pipe(catchError(this.handleError));
+  }
 
   deletePerson = (id: number): Observable<any> =>
     this.http.delete(`${this.apiUrl}/${id}`, { responseType: 'text' });
