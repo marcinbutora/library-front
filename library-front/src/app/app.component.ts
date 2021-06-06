@@ -8,24 +8,25 @@ import { BookDataService } from './service/book-data.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'library-front';
 
-  constructor(private pds: PersonDataService, private router: Router, private bds: BookDataService) {}
+  constructor(
+    private pds: PersonDataService,
+    private router: Router,
+    private bds: BookDataService
+  ) {}
 
   person: Person[] | undefined;
   book: Book[] | undefined;
 
   ngOnInit() {
-    this.pds.getPersonList().subscribe(data => this.person = data);
-    this.bds.getBookList().subscribe(data => this.book = data);
+    this.pds.getPersonList().subscribe((data) => (this.person = data));
+    this.bds.getBookList().subscribe((data) => (this.book = data));
   }
 
   readersClick = () => this.router.navigateByUrl('/readers');
   booksClick = () => this.router.navigateByUrl('/books');
-
 }
-
-

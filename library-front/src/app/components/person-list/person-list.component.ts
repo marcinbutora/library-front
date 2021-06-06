@@ -7,26 +7,22 @@ import { PersonDataService } from '../../service/person-data.service';
 @Component({
   selector: 'app-person-list',
   templateUrl: './person-list.component.html',
-  styleUrls: ['./person-list.component.scss']
+  styleUrls: ['./person-list.component.scss'],
 })
 export class PersonListComponent implements OnInit {
-
-  constructor(private pds: PersonDataService, private router: Router) { }
+  constructor(private pds: PersonDataService, private router: Router) {}
   person: Person[] | undefined;
 
-
   ngOnInit() {
-    this.pds.getPersonList().subscribe(data => this.person = data);
+    this.pds.getPersonList().subscribe((data) => (this.person = data));
   }
 
   details(id: number) {
     this.router.navigate(['/reader/details', id]);
     console.log(id);
-  };
+  }
 
   addNew() {
     this.router.navigate(['/reader/add']);
   }
-
-
 }

@@ -9,10 +9,9 @@ import { PersonDataService } from 'src/app/service/person-data.service';
 @Component({
   selector: 'app-person-add',
   templateUrl: './person-add.component.html',
-  styleUrls: ['./person-add.component.scss']
+  styleUrls: ['./person-add.component.scss'],
 })
 export class PersonAddComponent implements OnInit {
-
   person!: Person;
   submitted = false;
 
@@ -21,36 +20,30 @@ export class PersonAddComponent implements OnInit {
   }
 
   personAddForm = new FormGroup({
-    id: new FormControl(""),
-    firstname: new FormControl("", [
+    id: new FormControl(''),
+    firstname: new FormControl('', [
       Validators.required,
-      Validators.minLength(3)
+      Validators.minLength(3),
     ]),
-    lastname: new FormControl("", [
+    lastname: new FormControl('', [
       Validators.required,
-      Validators.minLength(3)
+      Validators.minLength(3),
     ]),
-    city: new FormControl("", [
-      Validators.required,
-      Validators.minLength(3)
-    ])
-  }); 
-  
-  constructor(private router: Router, private pds: PersonDataService) { }
+    city: new FormControl('', [Validators.required, Validators.minLength(3)]),
+  });
 
-  ngOnInit(): void {
-  }
-      savePerson() {
-        const person: Person = this.personAddForm.value;
-        this.pds.createPerson(person).subscribe(
-          data => {
-            // refreshing the list
-            this.pds.getPersonList();
-            console.log(data);
-            return true;
-          }
-        );
-        this.personAddForm.reset();
-        this.submitted = true;
+  constructor(private router: Router, private pds: PersonDataService) {}
+
+  ngOnInit(): void {}
+  savePerson() {
+    const person: Person = this.personAddForm.value;
+    this.pds.createPerson(person).subscribe((data) => {
+      // refreshing the list
+      this.pds.getPersonList();
+      console.log(data);
+      return true;
+    });
+    this.personAddForm.reset();
+    this.submitted = true;
   }
 }
