@@ -37,6 +37,7 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
     FormsModule,
     ReactiveFormsModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent],
 })

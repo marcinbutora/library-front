@@ -9,6 +9,7 @@
     <thead>
       <tr>
         <th scope="col">ID</th>
+        <th scope="col">Created</th>
         <th scope="col">Firstname</th>
         <th scope="col">Lastname</th>
         <th scope="col">City</th>
@@ -18,6 +19,7 @@
     <tbody>
       <tr *ngFor="let p of person">
         <th scope="row">{{ p.id }}</th>
+        <td>{{ this.pipe.transform(p.created, 'd.M.y (EEEE), h:mm') }}</td>
         <td>{{ p.firstname }}</td>
         <td>{{ p.lastname }}</td>
         <td>{{ p.city }}</td>
@@ -28,7 +30,9 @@
           <button type="button" class="btn btn-warning" (click)="update(p.id)">
             Update
           </button>
-          <button type="button" class="btn btn-danger" (click)="delete(p.id)">Delete</button>
+          <button type="button" class="btn btn-danger" (click)="delete(p.id)">
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>

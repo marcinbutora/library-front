@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { DatePipe, registerLocaleData } from '@angular/common';
 import { Person } from '../../interface/person';
 import { PersonDataService } from '../../service/person-data.service';
+import localePl  from '@angular/common/locales/pl';
+registerLocaleData(localePl, 'pl');
 
 @Component({
   selector: 'app-person-list',
@@ -12,6 +14,8 @@ import { PersonDataService } from '../../service/person-data.service';
 export class PersonListComponent implements OnInit {
   constructor(private pds: PersonDataService, private router: Router) {}
   person!: Person[];
+
+  pipe = new DatePipe('pl');
 
   ngOnInit() {
     this.pds.getPersonList().subscribe((data) => (this.person = data));
