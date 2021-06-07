@@ -60,6 +60,17 @@
         City must constains at least 3 characters
       </p>
     </div>
+    <div class="form-group">
+      <label for="createdInput"></label>
+      <input
+        type="hidden"
+        value="{{ created }}"
+        readonly
+        formControlName="created"
+        id="createdInput"
+        class="form-control"
+      />
+    </div>
     <button
       type="submit"
       class="btn btn-primary"
