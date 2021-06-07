@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Person } from 'src/app/interface/person';
-import { DatePipe } from '@angular/common';
 import { PersonDataService } from 'src/app/service/person-data.service';
 
 @Component({
@@ -39,7 +38,7 @@ export class PersonAddComponent implements OnInit {
   }
   savePerson() {
     const person: Person = this.personAddForm.value;
-    this.pds.createPerson(person).subscribe(() => {
+    this.pds.createPerson(this.personAddForm.value).subscribe(() => {
       // refreshing the list
       this.pds.getPersonList();
     });
