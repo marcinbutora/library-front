@@ -15,6 +15,7 @@ import { PersonUpdateComponent } from './components/person-update/person-update.
 import { BookUpdateComponent } from './components/book-update/book-update.component';
 import { PersonDetailsComponent } from './components/person-details/person-details.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { RentalListComponent } from './components/rental-list/rental-list.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
     BookUpdateComponent,
     PersonDetailsComponent,
     BookDetailsComponent,
+    RentalListComponent,
   ],
   imports: [
     BrowserModule,
