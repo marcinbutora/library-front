@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/interface/book';
+import { Rental } from 'src/app/interface/rental';
 import { BookDataService } from 'src/app/service/book-data.service';
 
 @Component({
@@ -11,6 +12,8 @@ import { BookDataService } from 'src/app/service/book-data.service';
 export class BookDetailsComponent implements OnInit {
   id!: number;
   book!: Book;
+  rental!: Rental[];
+  message!: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,5 +30,13 @@ export class BookDetailsComponent implements OnInit {
 
   getList() {
     this.router.navigate(['/books']);
+  }
+
+  emptyRecords() {
+    if(this.rental?.length > 0) {
+      this.message = false;
+    } else {
+      this.message = true;
+    }
   }
 }

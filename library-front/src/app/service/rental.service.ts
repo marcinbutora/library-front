@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
+import { Book } from '../interface/book';
 import { Rental } from '../interface/rental';
 
 @Injectable({
@@ -42,4 +43,8 @@ export class RentalService {
   // working 
   getRentalsForPerson = (id: number): Observable<Rental[]> =>
     this.http.get<Rental[]>(`${this.apiUrl}/rentals/person/${id}`)
+
+  // working
+  getBookForRentals = (id: number): Observable<Rental[]> => 
+    this.http.get<Rental[]>(`${this.apiUrl}/rentals/book/${id}`);
 }

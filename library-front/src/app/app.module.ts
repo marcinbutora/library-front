@@ -17,6 +17,7 @@ import { PersonDetailsComponent } from './components/person-details/person-detai
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { RentalListComponent } from './components/rental-list/rental-list.component';
 import { PersonRentalsComponent } from './components/person-rentals/person-rentals.component';
+import { RentalPersonsComponent } from './components/rental-persons/rental-persons.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PersonRentalsComponent } from './components/person-rentals/person-renta
     BookDetailsComponent,
     RentalListComponent,
     PersonRentalsComponent,
+    RentalPersonsComponent,
   ],
   imports: [
     BrowserModule,

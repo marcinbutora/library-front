@@ -40,6 +40,11 @@
         value="{{ book?.isbn }}"
       />
     </div>
+    <div class="container" [hidden]="emptyRecords()">
+      Readers who have rented the book: <b>{{ book?.title }}</b>
+    </div>
+    <app-rental-persons></app-rental-persons>
+    <div>
     <div>
       <button (click)="getList()" class="btn btn-primary">Go Back</button>
     </div>
