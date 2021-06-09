@@ -15,7 +15,7 @@ export class PersonListComponent implements OnInit {
   constructor(private pds: PersonDataService, private router: Router) {}
   person!: Person[];
 
-  pipe = new DatePipe('pl');
+  // pipe = new DatePipe('pl');
 
   ngOnInit() {
     this.pds.getPersonList().subscribe((data) => (this.person = data));

@@ -19,7 +19,7 @@
     <tbody>
       <tr *ngFor="let p of person">
         <th scope="row">{{ p.id }}</th>
-        <td>{{ this.pipe.transform(p.created, 'd.M.y (EEEE), h:mm') }}</td>
+        <td>{{ p.created | date: 'fullDate' }}</td>
         <td>{{ p.firstname }}</td>
         <td>{{ p.lastname }}</td>
         <td>{{ p.city }}</td>
