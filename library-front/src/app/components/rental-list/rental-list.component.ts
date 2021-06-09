@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Book } from 'src/app/interface/book';
 import { Person } from 'src/app/interface/person';
 import { Rental } from 'src/app/interface/rental';
@@ -15,15 +16,19 @@ export class RentalListComponent implements OnInit {
   rental!: Rental[];
   book!: Book[];
 
-  constructor(private rds: RentalService) { }
+  constructor(private rds: RentalService, private router: Router) { }
 
   ngOnInit(){
     this.rds.getRentalList().subscribe(data =>  {
       this.rental = data,
-      console.log(data);
-      
-    })
+      console.log(data); 
+    });
     
+    
+  }
+
+  addNew() {
+    this.router.navigate(['/rental/add']);
   }
 
 }

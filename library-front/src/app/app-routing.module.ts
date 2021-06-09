@@ -13,7 +13,7 @@ import { RentalListComponent } from './components/rental-list/rental-list.compon
 const routes: Routes = [
   { path: 'readers', component: PersonListComponent },
   { path: 'books', component: BookListComponent },
-  { path: 'rental', component: RentalListComponent},
+  { path: 'rentals', component: RentalListComponent},
   { path: 'reader/add', component: PersonAddComponent },
   { path: 'book/add', component: BookAddComponent},
   { path: 'reader/update/:id', component: PersonUpdateComponent},
