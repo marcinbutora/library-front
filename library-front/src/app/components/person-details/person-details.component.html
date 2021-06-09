@@ -50,6 +50,10 @@
       value="{{ person?.city }}"
     />
   </div>
+  <div class="container" [hidden]="emptyRecords()">
+    Rented books by: <b>{{ person?.firstname }} {{ person?.lastname }}</b>
+  </div>
+  <app-person-rentals></app-person-rentals>
   <div>
     <button (click)="getList()" class="btn btn-primary">Go Back</button>
   </div>

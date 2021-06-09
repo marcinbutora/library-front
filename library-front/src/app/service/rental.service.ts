@@ -38,4 +38,8 @@ export class RentalService {
   // working
   getRentalList = (): Observable<Rental[]> =>
     this.http.get<Rental[]>(`${this.apiUrl}/rental/list`);
+
+  // working 
+  getRentalsForPerson = (id: number): Observable<Rental[]> =>
+    this.http.get<Rental[]>(`${this.apiUrl}/rentals/person/${id}`)
 }
