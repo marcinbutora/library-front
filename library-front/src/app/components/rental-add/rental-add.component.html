@@ -1,6 +1,7 @@
 <div class="container">
   <form [formGroup]="rentalAddForm" (ngSubmit)="createRental()">
     <div class="form-group">
+      <h2>New rental:</h2>
       <label for="readerInput">Reader:</label>
       <input type="hidden" name="id" formControlName="id" />
       <select class="form-select" id="readerInput">
@@ -18,6 +19,7 @@
       <label for="dateInput">Date:</label>
       <br />
       <input
+      class="form-control" placeholder="yyyy-mm-dd hh:mm:ss" ngbDatepicker
         type="datetime-local"
         name="rented_date"
         id="dateInput"
