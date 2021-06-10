@@ -1,6 +1,7 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, JsonpClientBackend } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Book } from '../interface/book';
 import { Rental } from '../interface/rental';
 
@@ -47,4 +48,13 @@ export class RentalService {
   // working
   getBookForRentals = (id: number): Observable<Rental[]> => 
     this.http.get<Rental[]>(`${this.apiUrl}/rentals/book/${id}`);
+
+    // working
+    createRental(rental: Rental): Observable<Rental> {
+      let rentalBody = JSON.stringify(rental);
+      return this.http
+        .post<Rental>(`${this.apiUrl}/rental/add`, rentalBody, this.httpOptions)
+        .pipe(catchError(this.handleError));
+    }
+
 }
