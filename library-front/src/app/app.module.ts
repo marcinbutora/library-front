@@ -18,6 +18,7 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
 import { RentalListComponent } from './components/rental-list/rental-list.component';
 import { PersonRentalsComponent } from './components/person-rentals/person-rentals.component';
 import { RentalPersonsComponent } from './components/rental-persons/rental-persons.component';
+import { RentalAddComponent } from './components/rental-add/rental-add.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { RentalPersonsComponent } from './components/rental-persons/rental-perso
     RentalListComponent,
     PersonRentalsComponent,
     RentalPersonsComponent,
+    RentalAddComponent,
   ],
   imports: [
     BrowserModule,
