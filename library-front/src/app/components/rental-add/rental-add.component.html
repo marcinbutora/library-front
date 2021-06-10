@@ -1,1 +1,15 @@
-<p>rental-add works!</p>
+<div class="container">
+    <form>
+      <div class="form-group">
+        <label for="readerInput">Reader:</label>
+        <select class="form-select" id="readerInput">
+            <option *ngFor="let p of person" value="{{ p.id }}">{{ p.firstname }} {{ p.lastname}}</option>
+        </select>
+        <label for="bookInput">Book:</label>
+        <select class="form-select" id="bookInput">
+            <option *ngFor="let b of book" value="{{ b.id }}">{{ b.title }}</option>
+        </select>
+      </div>
+    </form>
+  </div>
+  
