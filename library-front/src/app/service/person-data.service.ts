@@ -9,12 +9,13 @@ import { Observable, throwError } from 'rxjs';
 import { Book } from '../interface/book';
 import { Person } from '../interface/person';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PersonDataService {
-  private readonly apiUrl: string = 'http://localhost:8080/api';
+  private readonly apiUrl: string = environment.apiUrl;
 
   httpOptions = {
     headers: new HttpHeaders({

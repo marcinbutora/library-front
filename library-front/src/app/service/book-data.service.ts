@@ -2,13 +2,14 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Book } from '../interface/book';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookDataService {
-  private readonly apiUrl: string = 'http://localhost:8080/api';
+  private readonly apiUrl: string = environment.apiUrl;
 
   httpOptions = {
     headers: new HttpHeaders({

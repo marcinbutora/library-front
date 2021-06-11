@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Book, Person, Rental } from 'src/app/interface/rental';
+import { Book } from 'src/app/interface/book';
+import { Person } from 'src/app/interface/person';
 import { BookDataService } from 'src/app/service/book-data.service';
 import { PersonDataService } from 'src/app/service/person-data.service';
 import { RentalService } from 'src/app/service/rental.service';
@@ -41,13 +42,18 @@ export class RentalAddComponent implements OnInit {
   }
 
   createRental() {
-    const rental: Rental = this.rentalAddForm.value;
-    this.rds.createRental(this.rentalAddForm.value).subscribe(() => {
+    const personId = this.rentalAddForm.controls['person_id'].value;
+    const bookId = this.rentalAddForm.controls['book_id'].value;
+    this.rds.createRental(personId, bookId).subscribe(() => {
       // refreshing the list
+      console.log("personId", personId);
+      console.log("bookId", bookId);
       this.rds.getRentalList();
+    
     });
 
     this.rentalAddForm.reset();
     this.submitted = true;
   }
+
 }

@@ -40,8 +40,11 @@ export class PersonAddComponent implements OnInit {
     const person: Person = this.personAddForm.value;
     this.pds.createPerson(this.personAddForm.value).subscribe(() => {
       // refreshing the list
-      this.pds.getPersonList();
-    });
+      this.pds.getPersonList();      
+    }, error => {
+      //TODO handle error action
+    }
+    );
 
     this.personAddForm.reset();
     this.submitted = true;
