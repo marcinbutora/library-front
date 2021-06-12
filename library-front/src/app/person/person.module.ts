@@ -3,15 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from '../app.component';
-import { BookAddComponent } from './components/book-add/book-add.component';
-import { BookDetailsComponent } from './components/book-details/book-details.component';
-import { BookUpdateComponent } from './components/book-update/book-update.component';
+import { PersonAddComponent } from './components/person-add/person-add.component';
+import { PersonUpdateComponent } from './components/person-update/person-update.component';
+import { PersonDetailsComponent } from './components/person-details/person-details.component';
+import { PersonRentalsComponent } from './components/person-rentals/person-rentals.component';
 
 @NgModule({
     declarations: [
-        BookAddComponent,
-        BookDetailsComponent,
-        BookUpdateComponent
+        PersonAddComponent,
+        PersonUpdateComponent,
+        PersonDetailsComponent,
+        PersonRentalsComponent
     ],
     imports: [
         BrowserModule,

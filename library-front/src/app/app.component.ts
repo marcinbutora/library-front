@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from './interface/book';
-import { Person } from './interface/person';
-import { PersonDataService } from './service/person-data.service';
+import { Book } from './book/models/book';
+import { Person } from './person/model/person';
 import { Router } from '@angular/router';
-import { BookDataService } from './service/book-data.service';
-import { RentalService } from './service/rental.service';
-import { Rental } from './interface/rental';
+import { RentalService } from './rental/service/rental.service';
+import { Rental } from './rental/model/rental';
+import { BookDataService } from './book/services/book-data.service';
+import { PersonDataService } from './person/service/person-data.service';
 
 @Component({
   selector: 'app-root',

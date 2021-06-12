@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BookAddComponent } from './components/book-add/book-add.component';
-import { BookDetailsComponent } from './components/book-details/book-details.component';
-import { BookListComponent } from './components/book-list/book-list.component';
-import { BookUpdateComponent } from './components/book-update/book-update.component';
-import { PersonAddComponent } from './components/person-add/person-add.component';
-import { PersonDetailsComponent } from './components/person-details/person-details.component';
-import { PersonListComponent } from './components/person-list/person-list.component';
-import { PersonUpdateComponent } from './components/person-update/person-update.component';
-import { RentalAddComponent } from './components/rental-add/rental-add.component';
-import { RentalListComponent } from './components/rental-list/rental-list.component';
+import { BookAddComponent } from './book/components/book-add/book-add.component';
+import { BookDetailsComponent } from './book/components/book-details/book-details.component';
+import { BookListComponent } from './book/components/book-list/book-list.component';
+import { BookUpdateComponent } from './book/components/book-update/book-update.component';
+import { PersonAddComponent } from './person/components/person-add/person-add.component';
+import { PersonDetailsComponent } from './person/components/person-details/person-details.component';
+import { PersonListComponent } from './person/components/person-list/person-list.component';
+import { PersonUpdateComponent } from './person/components/person-update/person-update.component';
+import { RentalAddComponent } from './rental/components/rental-add/rental-add.component';
+import { RentalListComponent } from './rental/components/rental-list/rental-list.component';
 
 const routes: Routes = [
   { path: 'readers', component: PersonListComponent },

@@ -1,0 +1,37 @@
+<div class="container">
+    <table class="table table-light table-hover table-sm">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Date of rental</th>
+          <th scope="col">Firstname</th>
+          <th scope="col">Lastname</th>
+          <th scope="col">Book</th>
+          <th scope="col">Description</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of rental, let i=index">
+          <th scope="row">{{ i+1 }}</th>
+          <td>{{ r.rentedDate }}</td>
+          <td>{{ r.person.firstname }}</td>
+          <td>{{ r.person.lastname }}</td>
+          <td>{{ r.book.title }}</td>
+          <td>{{ r.book.description }}</td>
+          <td>
+            <button type="button" class="btn btn-primary">
+              Details
+            </button>
+            <button type="button" class="btn btn-warning">
+              Update
+            </button>
+            <button type="button" class="btn btn-danger">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

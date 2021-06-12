@@ -1,0 +1,40 @@
+<div class="container">
+  <button type="button" class="btn btn-info mb" (click)="addNew()">
+    <i class="fas fa-plus-circle"></i> Add new reader
+  </button>
+  <table class="table table-light table-hover table-sm">
+    <caption>
+      List of readers
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Created</th>
+        <th scope="col">Firstname</th>
+        <th scope="col">Lastname</th>
+        <th scope="col">City</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of person">
+        <th scope="row">{{ p.id }}</th>
+        <td>{{ p.created }}</td>
+        <td>{{ p.firstname }}</td>
+        <td>{{ p.lastname }}</td>
+        <td>{{ p.city }}</td>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="details(p.id)">
+            Details
+          </button>
+          <button type="button" class="btn btn-warning" (click)="update(p.id)">
+            Update
+          </button>
+          <button type="button" class="btn btn-danger" (click)="delete(p.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
