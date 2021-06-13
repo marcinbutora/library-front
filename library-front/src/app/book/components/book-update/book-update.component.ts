@@ -15,7 +15,7 @@ export class BookUpdateComponent implements OnInit {
   id: any;
 
   getBack() {
-    this.router.navigate(['/readers']);
+    this.router.navigate(['/books']);
   }
   bookUpdateForm = new FormGroup({
     id: new FormControl(''),
@@ -40,9 +40,9 @@ export class BookUpdateComponent implements OnInit {
     this.bds.getBookById(this.id).subscribe((data) => (this.book = data));
   }
 
-  updateBook() {
+  updateBook(id: number) {
     const book: Book  = this.bookUpdateForm.value;
-    this.bds.updateBook(book.id, book).subscribe(() => {
+    this.bds.updateBook(id, book).subscribe(() => {
       // refreshing the list
       this.bds.getBookList();
     });

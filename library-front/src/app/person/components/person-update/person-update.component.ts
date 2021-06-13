@@ -43,9 +43,9 @@ export class PersonUpdateComponent implements OnInit {
 
     this.pds.getPersonById(this.id).subscribe((data) => (this.person = data));
   }
-  updatePerson() {
+  updatePerson(id: number) {
     const person: Person = this.personUpdateForm.value;
-    this.pds.updatePerson(person.id, person).subscribe(() => {
+    this.pds.updatePerson(id, person).subscribe(() => {
       // refreshing the list
       this.pds.getPersonList();
     });

@@ -13,8 +13,8 @@ import { RentalService } from '../../service/rental.service';
   styleUrls: ['./rental-add.component.scss'],
 })
 export class RentalAddComponent implements OnInit {
-  person!: Person[];
-  book!: Book[];
+  person: Person[]=[];
+  book: Book[]=[];
   created = new Date();
   submitted = false;
 
@@ -40,6 +40,7 @@ export class RentalAddComponent implements OnInit {
     this.pds.getPersonList().subscribe((data) => (this.person = data));
     this.bds.getBookList().subscribe((data) => (this.book = data));
   }
+  
 
   createRental() {
     const personId = this.rentalAddForm.controls['person_id'].value;
@@ -51,8 +52,8 @@ export class RentalAddComponent implements OnInit {
       this.rds.getRentalList();
     
     }, error => {
-      console.log("Error saving rental", error);
-      this.submitted = false;
+      console.log("Error", error);
+      
     });
 
     this.rentalAddForm.reset();

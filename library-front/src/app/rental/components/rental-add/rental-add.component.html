@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="rentalAddForm" (ngSubmit)="createRental()">
+  <form [formGroup]="rentalAddForm" (submit)="createRental()">
     <div class="form-group">
       <h2>New rental:</h2>
       <label for="readerInput">Reader:</label>
@@ -38,14 +38,11 @@
   <div class="alert alert-success" role="alert" *ngIf="submitted">
     Rental was added to database!
   </div>
-  <div class="alert alert-warning" role="alert" *ngIf="!submitted && createRental()">
-    Something went wrong!
-  </div>
   <div>
     <button
       type="submit"
       class="btn btn-primary"
-      (click)="getBack()"ś
+      (click)="getBack()"
       *ngIf="submitted"
     >
       Get back to list
