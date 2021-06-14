@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Person } from 'src/app/person/model/person';
-import { DatePipe, registerLocaleData } from '@angular/common';
 import { RentalService } from 'src/app/rental/service/rental.service';
 import { Rental } from 'src/app/rental/model/rental';
 import { PersonDataService } from '../../service/person-data.service';
@@ -16,7 +15,6 @@ export class PersonDetailsComponent implements OnInit {
   person!: Person;
   rental!: Rental[];
   message!: boolean;
-  pipe = new DatePipe('pl');
 
   constructor(
     private route: ActivatedRoute,
