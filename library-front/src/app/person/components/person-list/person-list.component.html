@@ -17,8 +17,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of person">
-        <th scope="row">{{ p.id }}</th>
+      <tr *ngFor="let p of person, let i=index">
+        <th scope="row">{{ i+1 }}</th>
         <td>{{ p.created }}</td>
         <td>{{ p.firstname }}</td>
         <td>{{ p.lastname }}</td>

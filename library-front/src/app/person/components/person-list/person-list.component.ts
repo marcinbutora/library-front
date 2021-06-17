@@ -10,7 +10,8 @@ import { PersonDataService } from '../../service/person-data.service';
 })
 export class PersonListComponent implements OnInit {
   constructor(private pds: PersonDataService, private router: Router) {}
-  person!: Person[];
+  person: Person[]=[];
+  personr: Person | undefined;
   removed = false;
 
   ngOnInit() {

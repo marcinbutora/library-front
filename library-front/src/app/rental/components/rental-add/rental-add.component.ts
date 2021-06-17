@@ -42,18 +42,17 @@ export class RentalAddComponent implements OnInit {
   }
   
 
-  createRental() {
-    this.rds.createRental(this.rentalAddForm.controls['person_id'].value, this.rentalAddForm.controls['book_id'].value).subscribe(() => {
-      // refreshing the list
+  createRental = () => {
+    const personId = this.rentalAddForm.controls['person_id'].value;
+    const bookId = this.rentalAddForm.controls['book_id'].value;
+    this.rds.createRental(bookId, personId).subscribe((data) => {
+      console.log(data);
+      this.submitted = true;
       this.rds.getRentalList();
-    
     }, error => {
-      console.log("Error", error);
-      
-    });
-
-    this.rentalAddForm.reset();
-    this.submitted = true;
+      console.error(error);
+      this.submitted = false;
+    })
   }
 
 }
