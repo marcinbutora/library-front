@@ -71,6 +71,6 @@ export class PersonDataService {
   }
 
   // testing
-  deletePerson = (id: number): Observable<any> =>
-    this.http.delete(`${this.apiUrl}/person/delete/${id}`, this.httpOptions);
+  deletePerson = (id: number): Observable<Person> =>
+    this.http.delete<Person>(`${this.apiUrl}/person/delete/${id}`, this.httpOptions);
 }

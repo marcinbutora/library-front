@@ -11,6 +11,7 @@ import { PersonDataService } from '../../service/person-data.service';
 export class PersonListComponent implements OnInit {
   constructor(private pds: PersonDataService, private router: Router) {}
   person!: Person[];
+  removed = false;
 
   ngOnInit() {
     this.pds.getPersonList().subscribe((data) => (this.person = data));
@@ -25,7 +26,10 @@ export class PersonListComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.router.navigate(['/reader/delete', id]);      
+    this.pds.deletePerson(id).subscribe(() => {
+      this.removed = true;
+      this.router.navigate(['/readers']);      
+    })
   }
 
   addNew() {
