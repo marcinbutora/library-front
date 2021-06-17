@@ -5,13 +5,13 @@
       <label for="readerInput">Reader:</label>
       <input type="hidden" name="id" formControlName="id" />
       <select class="form-select" id="readerInput">
-        <option *ngFor="let p of person" value="{{ p.id }}" name="person_id">
+        <option *ngFor="let p of person" [value]="p.id" name="person_id">
           {{ p.firstname }} {{ p.lastname }}
         </option>
       </select>
       <label for="bookInput">Book:</label>
       <select class="form-select" id="bookInput">
-        <option *ngFor="let b of book" value="{{ b.id }}" name="book_id">
+        <option *ngFor="let b of book" [value]="b.id" name="book_id">
           {{ b.title }}
         </option>
       </select>

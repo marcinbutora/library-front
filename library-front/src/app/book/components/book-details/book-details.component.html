@@ -1,7 +1,9 @@
 <div class="container">
     <h2>Details:</h2>
+    <div class="row">
+      <div class="col">
     <div class="form-group">
-      <label for="idInput">ID:</label>
+      <label for="idInput"><b>ID:</b></label>
       <input
         type="text"
         readonly
@@ -11,7 +13,7 @@
       />
     </div>
     <div class="form-group">
-      <label for="titleInput">Title</label>
+      <label for="titleInput"><b>Title</b></label>
       <input
         type="text"
         readonly
@@ -21,17 +23,13 @@
       />
     </div>
     <div class="form-group">
-      <label for="descInput">Description</label>
-      <input
-        type="text"
-        readonly
-        class="form-control"
-        id="descInput"
-        value="{{ book?.description }}"
-      />
+      <label for="descInput"><b>Description</b></label>
+      <blockquote>
+        {{ book?.description }}
+      </blockquote>
     </div>
     <div class="form-group">
-      <label for="isbnInput">ISBN</label>
+      <label for="isbnInput"><b>ISBN</b></label>
       <input
         type="text"
         readonly
@@ -39,6 +37,11 @@
         id="isbnInput"
         value="{{ book?.isbn }}"
       />
+    </div>
+    </div>
+    <div class="col-md-auto">
+      <img [src]="book?.bookcover" class="bookCover">
+    </div>
     </div>
     <div class="container" [hidden]="emptyRecords()">
       Readers who have rented the book: <b>{{ book?.title }}</b>

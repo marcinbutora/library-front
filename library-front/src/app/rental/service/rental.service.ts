@@ -50,9 +50,9 @@ export class RentalService {
     this.http.get<Rental[]>(`${this.apiUrl}/rentals/book/${id}`);
 
     // working
-    createRental(bookId: number, personId: number): Observable<any> {
+    createRental(bookId: number, personId: number): Observable<Rental> {
       return this.http
-        .post<any>(`${this.apiUrl}/rental/${personId}/${bookId}`, this.httpOptions)
+        .post<Rental>(`${this.apiUrl}/rental/${personId}/${bookId}`, this.httpOptions)
         .pipe(catchError(this.handleError));
     }
 
