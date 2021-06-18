@@ -8,7 +8,6 @@
           <th scope="col">Lastname</th>
           <th scope="col">Book</th>
           <th scope="col">Description</th>
-          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -17,19 +16,8 @@
           <td>{{ r.rentedDate }}</td>
           <td>{{ r.person.firstname }}</td>
           <td>{{ r.person.lastname }}</td>
-          <td>{{ r.book.title }}</td>
+          <td><a [routerLink]="['/book/details', r.book.id]">{{ r.book.title }}</a></td>
           <td>{{ r.book.description }}</td>
-          <td>
-            <button type="button" class="btn btn-primary">
-              Details
-            </button>
-            <button type="button" class="btn btn-warning">
-              Update
-            </button>
-            <button type="button" class="btn btn-danger">
-              Delete
-            </button>
-          </td>
         </tr>
       </tbody>
     </table>
