@@ -18,8 +18,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let r of rental">
-          <th scope="row">{{ r.id }}</th>
+        <tr *ngFor="let r of rental, let i=index">
+          <th scope="row">{{ i+1 }}</th>
           <td>{{ r.rentedDate }}</td>
           <td>{{ r.person.firstname }}</td>
           <td>{{ r.person.lastname }}</td>
