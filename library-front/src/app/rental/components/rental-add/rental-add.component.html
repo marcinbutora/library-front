@@ -39,6 +39,9 @@
   <div class="alert alert-success" role="alert" *ngIf="submitted">
     Rental was added to database!
   </div>
+  <div class="alert alert-warning" role="alert" *ngIf="errorSubmit">
+    User have maximum number of rentals in database!
+  </div>
   <div>
     <button
       type="submit"

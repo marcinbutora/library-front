@@ -17,6 +17,7 @@ export class RentalAddComponent implements OnInit {
   book: Book[]=[];
   created = new Date();
   submitted = false;
+  errorSubmit = false;
 
   getBack() {
     this.router.navigate(['/readers']);
@@ -45,14 +46,13 @@ export class RentalAddComponent implements OnInit {
   createRental = () => {
     const personId = this.rentalAddForm.controls['person_id'].value;
     const bookId = this.rentalAddForm.controls['book_id'].value;
-    this.rds.createRental(bookId, personId).subscribe((data) => {
-      console.log(data);
+    this.rds.createRental(bookId, personId).subscribe(() => {
       this.submitted = true;
+      this.errorSubmit = false;
       this.rds.getRentalList();
-    }, error => {
-      console.error(error);
+    }, () => {
       this.submitted = false;
+      this.errorSubmit = true;
     })
   }
-
 }

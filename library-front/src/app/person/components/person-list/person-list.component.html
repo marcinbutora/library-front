@@ -1,5 +1,5 @@
 <div class="container">
-  <button type="button" class="btn btn-info mb" (click)="addNew()">
+  <button type="button" class="btn btn-dark mb" (click)="addNew()">
     <i class="fas fa-plus-circle"></i> Add new reader
   </button>
   <table class="table table-light table-hover table-sm">
@@ -24,15 +24,9 @@
         <td>{{ p.lastname }}</td>
         <td>{{ p.city }}</td>
         <td>
-          <button type="button" class="btn btn-primary" (click)="details(p.id)">
-            Details
-          </button>
-          <button type="button" class="btn btn-warning" (click)="update(p.id)">
-            Update
-          </button>
-          <button type="button" class="btn btn-danger" (click)="delete(p.id)">
-            Delete
-          </button>
+          <i class="fas fa-info-circle fa-2x" (click)="details(p.id)" data-toggle="tooltip" data-placement="top" title="Details"></i>
+          <i class="fas fa-pen-square fa-2x" (click)="update(p.id)" data-toggle="tooltip" data-placement="top" title="Update"></i>
+          <i class="fas fa-times-circle fa-2x" (click)="delete(p.id)" data-toggle="tooltip" data-placement="top" title="Delete"></i>
         </td>
       </tr>
     </tbody>
