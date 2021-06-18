@@ -22,7 +22,7 @@ export class RentalPersonsComponent implements OnInit {
     this.person;
     this.id = this.route.snapshot.params['id'];
     this.rds.getBookForRentals(this.id).subscribe((data) => {
-      (this.rental = data), console.log(data);
+      (this.rental = data)     
     });
   }
 }
