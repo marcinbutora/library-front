@@ -14,3 +14,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .valid-input {
     border: 1px solid green;
 }
+
+body {
+    background-image: url("./assets/images/library-863148.jpeg");
+    height: 100vh;
+    background-size: cover;
+}
+
+.container {
+    background-color: #fff;
+    opacity: 0.9;
+    margin-top: 1rem;
+    padding: 10px;
+}
