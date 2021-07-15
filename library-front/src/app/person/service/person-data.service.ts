@@ -44,17 +44,17 @@ export class PersonDataService {
 
   // working
   getPersonList = (): Observable<Person[]> =>
-    this.http.get<Person[]>(`${this.apiUrl}/person/list`);
+    this.http.get<Person[]>(`${this.apiUrl}/person`);
 
   // working
   getPersonById = (id: number): Observable<any> =>
-    this.http.get<Person>(`${this.apiUrl}/person/byid/${id}`);
+    this.http.get<Person>(`${this.apiUrl}/person/${id}`);
 
   // working
   createPerson(person: Person): Observable<Person> {
     let personBody = JSON.stringify(person);
     return this.http
-      .post<Person>(`${this.apiUrl}/person/add`, personBody, this.httpOptions)
+      .post<Person>(`${this.apiUrl}/person/`, personBody, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 
@@ -63,7 +63,7 @@ export class PersonDataService {
     let personBody = JSON.stringify(person);
     return this.http
       .put<Person>(
-        `${this.apiUrl}/person/update/${id}`,
+        `${this.apiUrl}/person/${id}`,
         personBody,
         this.httpOptions
       )
@@ -72,5 +72,5 @@ export class PersonDataService {
 
   // testing
   deletePerson = (id: number): Observable<Person> =>
-    this.http.delete<Person>(`${this.apiUrl}/person/delete/${id}`, this.httpOptions);
+    this.http.delete<Person>(`${this.apiUrl}/person/${id}`, this.httpOptions);
 }

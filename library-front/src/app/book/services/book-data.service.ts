@@ -38,22 +38,22 @@ export class BookDataService {
   constructor(private http: HttpClient) {}
 
   getBookList = (): Observable<Book[]> =>
-    this.http.get<Book[]>(`${this.apiUrl}/book/list`);
+    this.http.get<Book[]>(`${this.apiUrl}/book`);
 
   getBookById = (id: number): Observable<any> =>
-    this.http.get<Book>(`${this.apiUrl}/book/byid/${id}`);
+    this.http.get<Book>(`${this.apiUrl}/book/${id}`);
 
   // working
   createBook(book: Book): Observable<Book> {
     let bookBody = JSON.stringify(book);
     return this.http
-      .post<Book>(`${this.apiUrl}/book/add`, bookBody, this.httpOptions)
+      .post<Book>(`${this.apiUrl}/book/`, bookBody, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 
   updateBook = (id: number, value: any): Observable<Object> =>
-    this.http.put(`${this.apiUrl}/book/update/${id}`, value);
+    this.http.put(`${this.apiUrl}/book/${id}`, value);
 
   deleteBook = (id: number): Observable<any> =>
-    this.http.delete(`${this.apiUrl}/${id}`, { responseType: 'text' });
+    this.http.delete(`${this.apiUrl}/book/${id}`, { responseType: 'text' });
 }
