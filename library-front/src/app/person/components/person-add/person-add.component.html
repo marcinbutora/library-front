@@ -82,15 +82,18 @@
   </form>
 
   <br />
-  <div class="alert alert-success" role="alert" *ngIf="submitted">
+  <div class="alert alert-success" role="alert" *ngIf="successSubmit">
     Person was added to database!
+  </div>
+  <div *ngIf="errorSubmit" class="alert alert-danger">
+    {{ errorMessage }}
   </div>
   <div>
     <button
       type="submit"
       class="btn btn-primary"
       (click)="getBack()"
-      *ngIf="submitted"
+      *ngIf="successSubmit && errorSubmit"
     >
       Get back to list
     </button>

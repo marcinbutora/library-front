@@ -32,30 +32,27 @@ export class RentalService {
       );
     }
     // Return an observable with a user-facing error message.
-    return throwError('Something bad happened; please try again later.');
-    console.log(error.error);
-    
+    return throwError(`${error.message}`);    
   }
   
   constructor(private http: HttpClient) { }
 
   // working
   getRentalList = (): Observable<Rental[]> =>
-    this.http.get<Rental[]>(`${this.apiUrl}/rental/list`);
+    this.http.get<Rental[]>(`${this.apiUrl}/rentals`);
 
   // working 
   getRentalsForPerson = (id: number): Observable<Rental[]> =>
-    this.http.get<Rental[]>(`${this.apiUrl}/rentals/person/${id}`)
+    this.http.get<Rental[]>(`${this.apiUrl}/rentals/reader/${id}`)
 
   // working
   getBookForRentals = (id: number): Observable<Rental[]> => 
     this.http.get<Rental[]>(`${this.apiUrl}/rentals/book/${id}`);
 
-    // working
-    createRental(bookId: number, personId: number): Observable<Rental> {
-      return this.http
-        .post<Rental>(`${this.apiUrl}/rental/${personId}/${bookId}`, this.httpOptions)
-        .pipe(catchError(this.handleError));
-    }
-
+  // working
+  createRental(bookId: number, personId: number): Observable<Rental> {
+    return this.http
+      .post<Rental>(`${this.apiUrl}/rentals/${personId}/${bookId}`, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
 }

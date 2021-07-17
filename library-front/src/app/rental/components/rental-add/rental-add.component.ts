@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,8 +17,9 @@ export class RentalAddComponent implements OnInit {
   person: Person[]=[];
   book: Book[]=[];
   created = new Date();
-  submitted = false;
-  errorSubmit = false;
+  submitted: boolean = false;
+  errorSubmit: boolean = false;
+  errorMessage: string = '';
 
   getBack() {
     this.router.navigate(['/readers']);
@@ -48,11 +50,11 @@ export class RentalAddComponent implements OnInit {
     const bookId = this.rentalAddForm.controls['book_id'].value;
     this.rds.createRental(bookId, personId).subscribe(() => {
       this.submitted = true;
-      this.errorSubmit = false;
       this.rds.getRentalList();
-    }, () => {
-      this.submitted = false;
+    }, (error): HttpErrorResponse => {
       this.errorSubmit = true;
+      this.errorMessage = error;
+      return error;
     })
   }
 }

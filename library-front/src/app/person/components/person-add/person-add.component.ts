@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,7 +12,9 @@ import { PersonDataService } from '../../service/person-data.service';
 })
 export class PersonAddComponent implements OnInit {
   person!: Person;
-  submitted = false;
+  errorSubmit: boolean = false;
+  successSubmit: boolean = false;
+  errorMessage: string = '';
   created = new Date();
 
   getBack() {
@@ -40,13 +43,15 @@ export class PersonAddComponent implements OnInit {
     const person: Person = this.personAddForm.value;
     this.pds.createPerson(this.personAddForm.value).subscribe(() => {
       // refreshing the list
+      this.successSubmit = true;
       this.pds.getPersonList();      
-    }, error => {
-      //TODO handle error action
+      this.personAddForm.reset();
+    }, (error): HttpErrorResponse => {
+      this.errorSubmit = true;
+      this.errorMessage = error;
+      console.log(error);
+      return error;
     }
     );
-
-    this.personAddForm.reset();
-    this.submitted = true;
   }
 }

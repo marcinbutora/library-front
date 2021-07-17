@@ -37,7 +37,7 @@ export class PersonDataService {
       );
     }
     // Return an observable with a user-facing error message.
-    return throwError('Something bad happened; please try again later.');
+    return throwError(`Error Message: ${error.message}`);
   }
 
   constructor(private http: HttpClient) {}
