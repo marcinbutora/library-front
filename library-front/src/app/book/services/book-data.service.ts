@@ -1,8 +1,13 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { handleError } from 'src/functions/handleError';
 import { Book } from '../models/book';
 
 @Injectable({
@@ -20,21 +25,6 @@ export class BookDataService {
 
   msgTrue = false;
 
-  private handleError(error: HttpErrorResponse) {
-    if (error.status === 0) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.log('An error occurred:', error.error);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
-      console.log(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
-      );
-    }
-    // Return an observable with a user-facing error message.
-    return throwError('Something bad happened; please try again later.');
-  }
-
   constructor(private http: HttpClient) {}
 
   getBookList = (): Observable<Book[]> =>
@@ -48,7 +38,7 @@ export class BookDataService {
     let bookBody = JSON.stringify(book);
     return this.http
       .post<Book>(`${this.apiUrl}/book/`, bookBody, this.httpOptions)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(handleError));
   }
 
   updateBook = (id: number, value: any): Observable<Object> =>

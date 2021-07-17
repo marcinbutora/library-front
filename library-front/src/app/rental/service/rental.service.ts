@@ -1,8 +1,9 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { handleError } from 'src/functions/handleError';
 import { Rental } from '../model/rental';
 
 @Injectable({
@@ -19,21 +20,6 @@ export class RentalService {
   };
 
   msgTrue = false;
-
-  private handleError(error: HttpErrorResponse) {
-    if (error.status === 0) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.log('An error occurred:', error.error);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
-      console.log(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
-      );
-    }
-    // Return an observable with a user-facing error message.
-    return throwError(`${error.message}`);    
-  }
   
   constructor(private http: HttpClient) { }
 
@@ -53,6 +39,6 @@ export class RentalService {
   createRental(bookId: number, personId: number): Observable<Rental> {
     return this.http
       .post<Rental>(`${this.apiUrl}/rentals/${personId}/${bookId}`, this.httpOptions)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(handleError));
   }
 }

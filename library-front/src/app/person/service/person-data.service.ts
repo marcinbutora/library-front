@@ -1,13 +1,9 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-  HttpRequest,
-} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { handleError } from 'src/functions/handleError';
 import { Person } from '../model/person';
 
 @Injectable({
@@ -25,21 +21,6 @@ export class PersonDataService {
 
   msgTrue = false;
 
-  private handleError(error: HttpErrorResponse) {
-    if (error.status === 0) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.log('An error occurred:', error.error);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
-      console.log(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
-      );
-    }
-    // Return an observable with a user-facing error message.
-    return throwError(`Error Message: ${error.message}`);
-  }
-
   constructor(private http: HttpClient) {}
 
   // working
@@ -55,19 +36,15 @@ export class PersonDataService {
     let personBody = JSON.stringify(person);
     return this.http
       .post<Person>(`${this.apiUrl}/person/`, personBody, this.httpOptions)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(handleError));
   }
 
   // not working, some error of CORS policy
   updatePerson(id: number, person: Person): Observable<Person> {
     let personBody = JSON.stringify(person);
     return this.http
-      .put<Person>(
-        `${this.apiUrl}/person/${id}`,
-        personBody,
-        this.httpOptions
-      )
-      .pipe(catchError(this.handleError));
+      .put<Person>(`${this.apiUrl}/person/${id}`, personBody, this.httpOptions)
+      .pipe(catchError(handleError));
   }
 
   // testing
