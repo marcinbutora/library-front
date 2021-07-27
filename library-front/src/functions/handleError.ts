@@ -9,10 +9,11 @@ export function handleError(error: HttpErrorResponse) {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.
       console.log(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
+        `Backend returned code ${error.status}, ` + `body was: ${error.message}`
       );
     }
     // Return an observable with a user-facing error message.
-    return throwError(`${error.message}`);    
+    return throwError(`${error.message}\n${error.status}`);  
+    console.log(error.status);
   }
   

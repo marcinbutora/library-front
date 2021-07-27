@@ -48,7 +48,7 @@ export class PersonAddComponent implements OnInit {
       this.personAddForm.reset();
     }, (error): HttpErrorResponse => {
       this.errorSubmit = true;
-      this.errorMessage = error;
+      this.errorMessage = error.message;
       console.log(error);
       return error;
     }

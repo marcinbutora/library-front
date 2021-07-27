@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Person } from '../../model/person';
@@ -13,6 +14,8 @@ export class PersonListComponent implements OnInit {
   person: Person[]=[];
   personr: Person | undefined;
   removed = false;
+  errorRemoved = false;
+  errorMessage: string = '';
 
   ngOnInit() {
     this.pds.getPersonList().subscribe((data) => (this.person = data));
@@ -29,7 +32,14 @@ export class PersonListComponent implements OnInit {
   delete(id: number) {
     this.pds.deletePerson(id).subscribe(() => {
       this.removed = true;
+      this.errorRemoved = false;
       this.router.navigate(['/readers']);      
+    }, (error): HttpErrorResponse => {
+      console.log(error);
+      this.errorRemoved = true;
+      this.errorMessage = error.error.message;
+
+      return error;
     })
   }
 

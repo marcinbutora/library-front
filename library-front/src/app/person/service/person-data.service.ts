@@ -36,7 +36,6 @@ export class PersonDataService {
     let personBody = JSON.stringify(person);
     return this.http
       .post<Person>(`${this.apiUrl}/person/`, personBody, this.httpOptions)
-      .pipe(catchError(handleError));
   }
 
   // not working, some error of CORS policy
@@ -49,5 +48,5 @@ export class PersonDataService {
 
   // testing
   deletePerson = (id: number): Observable<Person> =>
-    this.http.delete<Person>(`${this.apiUrl}/person/${id}`, this.httpOptions);
+    this.http.delete<Person>(`${this.apiUrl}/person/${id}`, this.httpOptions)
 }
