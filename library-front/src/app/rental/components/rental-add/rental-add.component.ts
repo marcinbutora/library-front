@@ -43,7 +43,7 @@ export class RentalAddComponent implements OnInit {
     this.pds.getPersonList().subscribe((data) => (this.person = data));
     this.bds.getBookList().subscribe((data) => (this.book = data));
   }
-  
+
 
   createRental = () => {
     const personId = this.rentalAddForm.controls['person_id'].value;
@@ -52,8 +52,9 @@ export class RentalAddComponent implements OnInit {
       this.submitted = true;
       this.rds.getRentalList();
     }, (error): HttpErrorResponse => {
+      console.log(error.error.message);
       this.errorSubmit = true;
-      this.errorMessage = error;
+      this.errorMessage = error.error.message;
       return error;
     })
   }

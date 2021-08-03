@@ -44,12 +44,11 @@ export class PersonAddComponent implements OnInit {
     this.pds.createPerson(this.personAddForm.value).subscribe(() => {
       // refreshing the list
       this.successSubmit = true;
-      this.pds.getPersonList();      
+      this.pds.getPersonList();
       this.personAddForm.reset();
     }, (error): HttpErrorResponse => {
       this.errorSubmit = true;
-      this.errorMessage = error.message;
-      console.log(error);
+      this.errorMessage = error.error.message;
       return error;
     }
     );

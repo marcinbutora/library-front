@@ -20,25 +20,24 @@ export class RentalService {
   };
 
   msgTrue = false;
-  
+
   constructor(private http: HttpClient) { }
 
   // working
   getRentalList = (): Observable<Rental[]> =>
     this.http.get<Rental[]>(`${this.apiUrl}/rentals`);
 
-  // working 
+  // working
   getRentalsForPerson = (id: number): Observable<Rental[]> =>
     this.http.get<Rental[]>(`${this.apiUrl}/rentals/reader/${id}`)
 
   // working
-  getBookForRentals = (id: number): Observable<Rental[]> => 
+  getBookForRentals = (id: number): Observable<Rental[]> =>
     this.http.get<Rental[]>(`${this.apiUrl}/rentals/book/${id}`);
 
   // working
   createRental(bookId: number, personId: number): Observable<Rental> {
     return this.http
-      .post<Rental>(`${this.apiUrl}/rentals/${personId}/${bookId}`, this.httpOptions)
-      .pipe(catchError(handleError));
+      .post<Rental>(`${this.apiUrl}/rentals/${personId}/${bookId}`, this.httpOptions);
   }
 }
