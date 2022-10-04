@@ -1,6 +1,6 @@
 {
   "name": "library-front",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.config.json",
@@ -27,9 +27,9 @@
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },
-  "devDependencies": {
+  "devDependencies":{
     "@angular-devkit/build-angular": "^14.2.4",
-    "@angular/cli": "~11.2.8",
+    "@angular/cli": "~14.2.4",
     "@angular/compiler-cli": "~11.2.9",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
