@@ -1,9 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { handleError } from 'src/functions/handleError';
 import { Rental } from '../model/rental';
 
 @Injectable({
@@ -36,7 +34,7 @@ export class RentalService {
     this.http.get<Rental[]>(`${this.apiUrl}/rentals/book/${id}`);
 
   // working
-  createRental(bookId: number, personId: number): Observable<Rental> {
+    createRental(bookId: string | null, personId: string | null): Observable<Rental> {
     return this.http
       .post<Rental>(`${this.apiUrl}/rentals/${personId}/${bookId}`, this.httpOptions);
   }

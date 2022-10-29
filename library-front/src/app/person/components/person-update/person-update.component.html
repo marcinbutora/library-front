@@ -11,7 +11,7 @@
       <label for="firstnameInput">First name</label>
       <input
         type="text"
-        value="{{ person?.firstname }}"
+        value="{{ person.firstname }}"
         formControlName="firstname"
         class="form-control"
         [ngClass]="
@@ -28,14 +28,14 @@
         "
         class="warn"
       >
-        First name must constains at least 3 characters
+        First name must contains at least 3 characters
       </p>
     </div>
     <div class="form-group">
       <label for="lastnameInput">Last name</label>
       <input
         type="text"
-        value="{{ person?.lastname }}"
+        value="{{ person.lastname }}"
         formControlName="lastname"
         class="form-control"
         [ngClass]="
@@ -52,14 +52,14 @@
         "
         class="warn"
       >
-        Last name must constains at least 3 characters
+        Last name must contains at least 3 characters
       </p>
     </div>
     <div class="form-group">
       <label for="cityInput">City</label>
       <input
         type="text"
-        value="{{ person?.city }}"
+        value="{{ person.city }}"
         formControlName="city"
         [ngClass]="
           personUpdateForm.controls['city'].valid ? 'valid-input' : 'warn-input'
@@ -74,7 +74,7 @@
         "
         class="warn"
       >
-        City must constains at least 3 characters
+        City must contains at least 3 characters
       </p>
     </div>
     <button

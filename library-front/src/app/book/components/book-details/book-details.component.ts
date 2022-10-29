@@ -22,7 +22,6 @@ export class BookDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.book;
     this.id = this.route.snapshot.params['id'];
 
     this.bds.getBookById(this.id).subscribe((data) => this.book = data);
@@ -33,10 +32,6 @@ export class BookDetailsComponent implements OnInit {
   }
 
   emptyRecords() {
-    if(this.rental?.length > 0) {
-      this.message = false;
-    } else {
-      this.message = true;
-    }
+    this.message = this.rental?.length <= 0;
   }
 }

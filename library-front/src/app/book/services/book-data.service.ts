@@ -1,14 +1,14 @@
 import {
   HttpClient,
-  HttpErrorResponse,
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { handleError } from 'src/functions/handleError';
 import { Book } from '../models/book';
+import {FormControl, ɵFormGroupValue, ɵTypedOrUntyped} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +34,7 @@ export class BookDataService {
     this.http.get<Book>(`${this.apiUrl}/book/${id}`);
 
   // working
-  createBook(book: Book): Observable<Book> {
+    createBook(book: ɵTypedOrUntyped<{ isbn: FormControl<string | null>; description: FormControl<string | null>; id: FormControl<string | null>; title: FormControl<string | null> }, ɵFormGroupValue<{ isbn: FormControl<string | null>; description: FormControl<string | null>; id: FormControl<string | null>; title: FormControl<string | null> }>, any>): Observable<Book> {
     let bookBody = JSON.stringify(book);
     return this.http
       .post<Book>(`${this.apiUrl}/book/`, bookBody, this.httpOptions)

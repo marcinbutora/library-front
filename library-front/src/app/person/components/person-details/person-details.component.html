@@ -7,7 +7,7 @@
       readonly
       class="form-control"
       id="idInput"
-      value="{{ person?.id }}"
+      value="{{ person.id }}"
     />
   </div>
   <div class="form-group">
@@ -17,7 +17,7 @@
       readonly
       class="form-control"
       id="createdInput"
-      value="{{ person?.created }}"
+      value="{{ person.created }}"
     />
   </div>
   <div class="form-group">
@@ -27,7 +27,7 @@
       readonly
       class="form-control"
       id="firstnameInput"
-      value="{{ person?.firstname }}"
+      value="{{ person.firstname }}"
     />
   </div>
   <div class="form-group">
@@ -37,7 +37,7 @@
       readonly
       class="form-control"
       id="lastnameInput"
-      value="{{ person?.lastname }}"
+      value="{{ person.lastname }}"
     />
   </div>
   <div class="form-group">
@@ -47,11 +47,11 @@
       readonly
       class="form-control"
       id="cityInput"
-      value="{{ person?.city }}"
+      value="{{ person.city }}"
     />
   </div>
   <div class="container" [hidden]="emptyRecords()">
-    Rented books by: <b>{{ person?.firstname }} {{ person?.lastname }}</b>
+    Rented books by: <b>{{ person.firstname }} {{ person.lastname }}</b>
   </div>
   <app-person-rentals></app-person-rentals>
   <div>

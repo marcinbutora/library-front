@@ -34,14 +34,13 @@ export class BookUpdateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.book;
     this.id = this.route.snapshot.params['id'];
 
     this.bds.getBookById(this.id).subscribe((data) => (this.book = data));
   }
 
   updateBook(id: number) {
-    const book: Book  = this.bookUpdateForm.value;
+    const book = this.bookUpdateForm.value;
     this.bds.updateBook(id, book).subscribe(() => {
       // refreshing the list
       this.bds.getBookList();

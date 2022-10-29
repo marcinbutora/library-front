@@ -38,13 +38,12 @@ export class PersonUpdateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.person;
     this.id = this.route.snapshot.params['id'];
 
     this.pds.getPersonById(this.id).subscribe((data) => (this.person = data));
   }
   updatePerson(id: number) {
-    const person: Person = this.personUpdateForm.value;
+    const person = this.personUpdateForm.value;
     this.pds.updatePerson(id, person).subscribe(() => {
       // refreshing the list
       this.pds.getPersonList();

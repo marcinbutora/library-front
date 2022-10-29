@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { handleError } from 'src/functions/handleError';
 import { Person } from '../model/person';
+import {FormControl, ɵFormGroupValue, ɵTypedOrUntyped} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root',
@@ -32,14 +33,14 @@ export class PersonDataService {
     this.http.get<Person>(`${this.apiUrl}/person/${id}`);
 
   // working
-  createPerson(person: Person): Observable<Person> {
+    createPerson(person: ɵTypedOrUntyped<{ firstname: FormControl<string | null>; city: FormControl<string | null>; created: FormControl<Date | null>; id: FormControl<string | null>; lastname: FormControl<string | null> }, ɵFormGroupValue<{ firstname: FormControl<string | null>; city: FormControl<string | null>; created: FormControl<Date | null>; id: FormControl<string | null>; lastname: FormControl<string | null> }>, any>): Observable<Person> {
     let personBody = JSON.stringify(person);
     return this.http
       .post<Person>(`${this.apiUrl}/person/`, personBody, this.httpOptions)
   }
 
   // not working, some error of CORS policy
-  updatePerson(id: number, person: Person): Observable<Person> {
+  updatePerson(id: number, person: ɵTypedOrUntyped<{ firstname: FormControl<string | null>; city: FormControl<string | null>; id: FormControl<string | null>; lastname: FormControl<string | null> }, ɵFormGroupValue<{ firstname: FormControl<string | null>; city: FormControl<string | null>; id: FormControl<string | null>; lastname: FormControl<string | null> }>, any>): Observable<Person> {
     let personBody = JSON.stringify(person);
     return this.http
       .put<Person>(`${this.apiUrl}/person/${id}`, personBody, this.httpOptions)

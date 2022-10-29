@@ -40,9 +40,8 @@ export class PersonAddComponent implements OnInit {
   ngOnInit() {
   }
   savePerson() {
-    const person: Person = this.personAddForm.value;
-    this.pds.createPerson(this.personAddForm.value).subscribe(() => {
-      // refreshing the list
+    const person = this.personAddForm.value;
+    this.pds.createPerson(person).subscribe(() => {
       this.successSubmit = true;
       this.pds.getPersonList();
       this.personAddForm.reset();

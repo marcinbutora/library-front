@@ -9,7 +9,7 @@
         readonly
         class="form-control"
         id="idInput"
-        value="{{ book?.id }}"
+        value="{{ book.id }}"
       />
     </div>
     <div class="form-group">
@@ -19,13 +19,13 @@
         readonly
         class="form-control"
         id="titleInput"
-        value="{{ book?.title }}"
+        value="{{ book.title }}"
       />
     </div>
     <div class="form-group">
       <label for="descInput"><b>Description</b></label>
-      <blockquote>
-        {{ book?.description }}
+      <blockquote id="descInput">
+        {{ book.description }}
       </blockquote>
     </div>
     <div class="form-group">
@@ -35,16 +35,16 @@
         readonly
         class="form-control"
         id="isbnInput"
-        value="{{ book?.isbn }}"
+        value="{{ book.isbn }}"
       />
     </div>
     </div>
     <div class="col-md-auto">
-      <img [src]="book?.bookcover" class="bookCover">
+      <img [src]="book.bookcover" class="bookCover" alt="BookCover">
     </div>
     </div>
     <div class="container" [hidden]="emptyRecords()">
-      Readers who have rented the book: <b>{{ book?.title }}</b>
+      Readers who have rented the book: <b>{{ book.title }}</b>
     </div>
     <app-rental-persons></app-rental-persons>
     <div>
@@ -52,4 +52,4 @@
       <button (click)="getList()" class="btn btn-primary">Go Back</button>
     </div>
   </div>
-  
+</div>

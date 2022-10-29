@@ -37,7 +37,7 @@ export class BookAddComponent implements OnInit {
   }
 
   saveBook() {
-    const book: Book = this.bookAddForm.value;
+    const book = this.bookAddForm.value;
     this.bds.createBook(book).subscribe(() => {
       // refreshing the list
       this.bds.getBookList();
