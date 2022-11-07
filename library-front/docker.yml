@@ -1,0 +1,11 @@
+image: docker:latest
+services:
+  - docker:dind
+  
+stages:
+  - package
+  - deploy
+
+docker-build:
+  stage: package
+  script: 
